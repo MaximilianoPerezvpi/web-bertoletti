@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galería de Flota | Bertoletti Transporte y Logística</title>
     
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
 
@@ -84,11 +87,15 @@
     <section class="py-16">
         <div class="max-w-7xl mx-auto px-4">
             
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <span class="bg-bertoletti text-white px-4 py-1 rounded-full text-sm font-bold">Todas las Unidades</span>
+                <span class="bg-white text-gray-500 px-4 py-1 rounded-full text-sm font-bold shadow-sm border border-gray-100">Carga Pesada</span>
+                <span class="bg-white text-gray-500 px-4 py-1 rounded-full text-sm font-bold shadow-sm border border-gray-100">Logística Internacional</span>
+            </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="gallery-grid">
                 
                 <script>
-                    // Generamos 12 items para que veas la estructura
                     const galleryGrid = document.getElementById('gallery-grid');
                     for(let i=1; i<=12; i++) {
                         galleryGrid.innerHTML += `
@@ -141,12 +148,11 @@
             lightboxImg.src = src;
             lightbox.classList.remove('hidden');
             lightbox.classList.add('flex');
-            // Pequeño delay para la animación de escala
             setTimeout(() => {
                 lightboxImg.classList.remove('scale-95');
                 lightboxImg.classList.add('scale-100');
             }, 10);
-            document.body.style.overflow = 'hidden'; // Bloquear scroll
+            document.body.style.overflow = 'hidden'; 
         }
 
         function closeLightbox() {
@@ -155,11 +161,10 @@
             setTimeout(() => {
                 lightbox.classList.add('hidden');
                 lightbox.classList.remove('flex');
-                document.body.style.overflow = 'auto'; // Habilitar scroll
+                document.body.style.overflow = 'auto'; 
             }, 200);
         }
 
-        // Cerrar con tecla ESC
         document.addEventListener('keydown', (e) => {
             if (e.key === "Escape") closeLightbox();
         });
