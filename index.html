@@ -144,22 +144,20 @@
 
         /* --- ESTILOS CARRUSEL --- */
         .carousel-track {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    height: 100%;
-    width: 100%;
-}
-
-.carousel-slide {
-    min-width: 100%; /* ESTO es lo que evita que se vea descentrado */
-    height: 100%;
-}
-
-.carousel-slide img {
-    width: 100%;
-    height: 100%;
-    object-cover: cover; /* Para que no se estiren las caras o los camiones */
-}
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+        .carousel-slide {
+            min-width: 100%;
+            flex-shrink: 0;
+            height: 100%;
+        }
+        .carousel-indicator.active {
+            background-color: var(--rojo-bertoletti);
+            transform: scale(1.2);
+            opacity: 1;
+        }
     </style>
 </head>
 <body class="text-gray-800 bg-white font-sans">
@@ -291,32 +289,42 @@
                 <div class="space-y-6 text-gray-600 text-lg leading-relaxed">
                     <p>Somos una empresa de origen 100% uruguaya y familiar que se ha destacado en el mercado nacional e internacional por su trato personalizado, aún hoy atendida por sus dueños.</p>
                     <p>Fue fundada en 1965 realizando transporte de cargas secas a granel. A partir de 1975 se ampliaron los destinos hacia Brasil, Argentina, Chile, Paraguay, Bolivia y recientemente Perú.</p>
-                    <p>Disponemos de un parque automotor de <strong>+60 unidades completas</strong> preparadas para las exigencias del MERCOSUR.</p>
+                    <p>Disponemos de un parque automotor de <strong>+50 unidades completas</strong> preparadas para las exigencias del MERCOSUR.</p>
                     <p class="font-bold text-gray-900 border-l-4 border-bertoletti pl-4">Edgardo Bertoletti SA es la solución eficiente y confiable para su transporte de cualquier tipo de mercancías.</p>
                 </div>
             </div>
-<div class="lg:w-1/2 relative mt-16 lg:mt-0 reveal-on-scroll">
-            <div id="historia-carousel" class="relative rounded-3xl shadow-2xl h-[450px] overflow-hidden group bg-gray-100">
-                <div class="carousel-track js-carousel-track h-full flex transition-transform duration-500 ease-in-out">
-                    <div class="carousel-slide js-carousel-slide min-w-full h-full flex-shrink-0">
-                        <img src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/d7d7e8a44fa98798a6976315d07c80b0.jpeg" class="w-full h-full" style="object-fit: cover; object-position: center;" alt="Foto 1">
+            
+            <div class="lg:w-1/2 relative mt-16 lg:mt-0 reveal-on-scroll">
+                <div id="historia-carousel" class="relative rounded-3xl shadow-2xl h-[450px] overflow-hidden group bg-gray-100">
+                    <div class="carousel-track js-carousel-track h-full">
+                        <div class="carousel-slide js-carousel-slide">
+                            <img src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/d7d7e8a44fa98798a6976315d07c80b0.jpeg" class="w-full h-full object-cover" alt="Foto histórica 1">
+                        </div>
+                        <div class="carousel-slide js-carousel-slide">
+                            <img src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/fotohistorica2" alt="Foto histórica 2">
+                        </div>
+                        <div class="carousel-slide js-carousel-slide">
+                            <img src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/fotohistorica3" class="w-full h-full object-cover" alt="Foto histórica 3">
+                        </div>
+                        <div class="carousel-slide js-carousel-slide">
+                            <img src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/fotohistorica4" class="w-full h-full object-cover" alt="Foto histórica 4">
+                        </div>
+                        <div class="carousel-slide js-carousel-slide">
+                            <img src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/fotohistorica5" class="w-full h-full object-cover" alt="Foto histórica 5">
+                        </div>
                     </div>
-                    <div class="carousel-slide js-carousel-slide min-w-full h-full flex-shrink-0">
-                        <img src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/fotohistorica2.jpg" class="w-full h-full" style="object-fit: cover; object-position: center;" alt="Foto 2">
-                    </div>
-                    <div class="carousel-slide js-carousel-slide min-w-full h-full flex-shrink-0">
-                        <img src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/fotohistorica3.jpg" class="w-full h-full" style="object-fit: cover; object-position: center;" alt="Foto 3">
-                    </div>
+
+                    <button class="js-carousel-prev absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity z-10">
+                        <i class="ri-arrow-left-s-line text-2xl"></i>
+                    </button>
+                    <button class="js-carousel-next absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity z-10">
+                        <i class="ri-arrow-right-s-line text-2xl"></i>
+                    </button>
+
+                    <div class="carousel-indicators js-carousel-indicators absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
+                        </div>
                 </div>
 
-                <div class="absolute inset-0 flex items-center justify-between p-4 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                    <button id="prev-historia" class="p-2 rounded-full bg-black/30 text-white pointer-events-auto hover:bg-black/50"><i class="ri-arrow-left-s-line"></i></button>
-                    <button id="next-historia" class="p-2 rounded-full bg-black/30 text-white pointer-events-auto hover:bg-black/50"><i class="ri-arrow-right-s-line"></i></button>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
                 <div class="absolute -top-6 -left-6 bg-bertoletti text-white p-6 rounded-2xl shadow-xl text-center z-20">
                     <div class="text-4xl font-bold counter-anim" data-target="50" data-suffix="+">+0</div>
                     <div class="text-xs uppercase font-bold">Unidades<br>en Flota</div>
@@ -584,17 +592,25 @@
 
         const dots = indicatorsNav ? Array.from(indicatorsNav.children) : [];
 
-      const updateCarousel = (index) => {
-        const track = document.querySelector('.js-carousel-track');
-        const slides = document.querySelectorAll('.js-carousel-slide');
-        index = (index + slides.length) % slides.length;
-        track.style.transform = `translateX(-${index * 100}%)`;
-        currentSlideIndex = index;
-    };
+        const updateCarousel = (index) => {
+            // Asegurar que el índice sea válido con aritmética modular
+            index = (index + slides.length) % slides.length;
+            track.style.transform = `translateX(-${index * 100}%)`;
+            dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+            currentSlideIndex = index;
+        };
 
-    document.getElementById('next-historia')?.addEventListener('click', () => updateCarousel(currentSlideIndex + 1));
-    document.getElementById('prev-historia')?.addEventListener('click', () => updateCarousel(currentSlideIndex - 1));
-});
+        if (nextButton) nextButton.addEventListener('click', () => updateCarousel(currentSlideIndex + 1));
+        if (prevButton) prevButton.addEventListener('click', () => updateCarousel(currentSlideIndex - 1));
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => updateCarousel(index));
+        });
+
+        // Auto-play cada 5 segundos
+        setInterval(() => updateCarousel(currentSlideIndex + 1), 5000);
+    }
+}); // Cierre del addEventListener "DOMContentLoaded"
 
 </script>
 </body>
