@@ -554,39 +554,64 @@
 
             document.querySelectorAll('.counter-anim').forEach(el => numberObserver.observe(el));
 
-            // 4. Carrusel (Tu lógica original)
-            const track = document.querySelector('.js-carousel-track');
-            if (track) {
-                const slides = Array.from(track.children);
-                const nextButton = document.querySelector('.js-carousel-next');
-                const prevButton = document.querySelector('.js-carousel-prev');
-                const indicatorsNav = document.querySelector('.js-carousel-indicators');
+            // ... otros códigos que ya tengas (como EmailJS) ...
 
-                let currentSlideIndex = 0;
-                slides.forEach((_, index) => {
-                    const indicator = document.createElement('button');
-                    indicator.className = 'carousel-indicator w-3 h-3 rounded-full bg-white/50 transition-all';
-                    if (index === 0) indicator.classList.add('active');
-                    indicatorsNav.appendChild(indicator);
-                });
+  // --- LÓGICA DEL MENÚ MÓVIL ---
+    const menuOpen = document.getElementById('menu-open');
+    const menuClose = document.getElementById('menu-close');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
 
-                const updateCarousel = (index) => {
-                    track.style.transform = `translateX(-${index * 100}%)`;
-                    Array.from(indicatorsNav.children).forEach((ind, i) => {
-                        ind.classList.toggle('active', i === index);
-                    });
-                };
+    const toggleMenu = (open) => {
+        mobileMenu.style.transform = open ? 'translateX(0)' : 'translateX(100%)';
+        document.body.style.overflow = open ? 'hidden' : 'auto'; // Evita scroll al abrir
+    };
 
-                nextButton.addEventListener('click', () => {
-                    currentSlideIndex = (currentSlideIndex + 1) % slides.length;
-                    updateCarousel(currentSlideIndex);
-                });
-                prevButton.addEventListener('click', () => {
-                    currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
-                    updateCarousel(currentSlideIndex);
-                });
-            }
+    if (menuOpen) menuOpen.addEventListener('click', () => toggleMenu(true));
+    if (menuClose) menuClose.addEventListener('click', () => toggleMenu(false));
+    mobileLinks.forEach(link => link.addEventListener('click', () => toggleMenu(false)));
+
+    // --- 4. CARRUSEL HISTORIA TERMINADO ---
+    const track = document.querySelector('.js-carousel-track');
+    if (track && track.children.length > 0) {
+        const slides = Array.from(track.children);
+        const nextButton = document.querySelector('.js-carousel-next');
+        const prevButton = document.querySelector('.js-carousel-prev');
+        const indicatorsNav = document.querySelector('.js-carousel-indicators');
+
+        let currentSlideIndex = 0;
+
+        // Crear puntitos (indicadores) solo si no existen
+        if (indicatorsNav && indicatorsNav.children.length === 0) {
+            slides.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.className = `carousel-indicator w-3 h-3 rounded-full bg-gray-300 cursor-pointer transition-all ${index === 0 ? 'active' : ''}`;
+                indicatorsNav.appendChild(dot);
+            });
+        }
+
+        const dots = indicatorsNav ? Array.from(indicatorsNav.children) : [];
+
+        const updateCarousel = (index) => {
+            // Asegurar que el índice sea válido con aritmética modular
+            index = (index + slides.length) % slides.length;
+            track.style.transform = `translateX(-${index * 100}%)`;
+            dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+            currentSlideIndex = index;
+        };
+
+        if (nextButton) nextButton.addEventListener('click', () => updateCarousel(currentSlideIndex + 1));
+        if (prevButton) prevButton.addEventListener('click', () => updateCarousel(currentSlideIndex - 1));
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => updateCarousel(index));
         });
-    </script>
+
+        // Auto-play cada 5 segundos
+        setInterval(() => updateCarousel(currentSlideIndex + 1), 5000);
+    }
+}); // Cierre del addEventListener "DOMContentLoaded"
+
+</script>
 </body>
 </html>
