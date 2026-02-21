@@ -152,16 +152,6 @@
             min-width: 100%;
             flex-shrink: 0;
             height: 100%;
-            overflow: hidden; /* Evita que imágenes grandes "empujen" el diseño */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .carousel-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Recorta la imagen para que llene el espacio sin deformarse */
-            object-position: center; /* Asegura que lo importante de la foto esté siempre al medio */
         }
         .carousel-indicator.active {
             background-color: var(--rojo-bertoletti);
@@ -303,38 +293,51 @@
                     <p class="font-bold text-gray-900 border-l-4 border-bertoletti pl-4">Edgardo Bertoletti SA es la solución eficiente y confiable para su transporte de cualquier tipo de mercancías.</p>
                 </div>
             </div>
+            
+          <div class="lg:w-1/2 relative mt-16 lg:mt-0 reveal-on-scroll">
+    <div id="historia-carousel" class="relative rounded-3xl shadow-2xl h-[450px] overflow-hidden group bg-gray-100">
+        
+        <div class="carousel-track js-carousel-track h-full flex transition-transform duration-500 ease-in-out">
+            
+            <div class="carousel-slide js-carousel-slide min-w-full h-full flex-shrink-0">
+                <img src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/d7d7e8a44fa98798a6976315d07c80b0.jpeg" 
+                     class="w-full h-full object-cover object-center" alt="Foto 1">
+            </div>
 
-            <div class="lg:w-1/2 relative mt-16 lg:mt-0 reveal-on-scroll">
-                <div id="historia-carousel" class="relative rounded-3xl shadow-2xl h-[450px] overflow-hidden group bg-gray-100">
-                    <div class="carousel-track js-carousel-track h-full flex transition-transform duration-500 ease-in-out">
-                        <div class="carousel-slide js-carousel-slide min-w-full h-full flex-shrink-0">
-                            <img src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/d7d7e8a44fa98798a6976315d07c80b0.jpeg" alt="Foto 1">
-                        </div>
-                        <div class="carousel-slide js-carousel-slide min-w-full h-full flex-shrink-0">
-                            <img src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/fotohistorica2.jpg" alt="Foto 2">
-                        </div>
-                        <div class="carousel-slide js-carousel-slide min-w-full h-full flex-shrink-0">
-                            <img src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/fotohistorica3.jpg" alt="Foto 3">
-                        </div>
-                        <div class="carousel-slide js-carousel-slide min-w-full h-full flex-shrink-0">
-                            <img src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/fotohistorica4.jpg" alt="Foto 4">
-                        </div>
-                        <div class="carousel-slide js-carousel-slide min-w-full h-full flex-shrink-0">
-                            <img src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/fotohistorica5.jpg" alt="Foto 5">
-                        </div>
-                    </div>
+            <div class="carousel-slide js-carousel-slide min-w-full h-full flex-shrink-0">
+                <img src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/fotohistorica2.jpg" 
+                     class="w-full h-full object-cover object-center" alt="Foto 2">
+            </div>
 
-                    <div class="absolute inset-0 flex items-center justify-between p-4 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                        <button id="prev-historia" class="p-2 rounded-full bg-black/30 text-white pointer-events-auto hover:bg-black/50">
-                            <i class="ri-arrow-left-s-line text-2xl"></i>
-                        </button>
-                        <button id="next-historia" class="p-2 rounded-full bg-black/30 text-white pointer-events-auto hover:bg-black/50">
-                            <i class="ri-arrow-right-s-line text-2xl"></i>
-                        </button>
-                    </div>
+            <div class="carousel-slide js-carousel-slide min-w-full h-full flex-shrink-0">
+                <img src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/fotohistorica3.jpg" 
+                     class="w-full h-full object-cover object-center" alt="Foto 3">
+            </div>
 
-                    <div id="carousel-indicators" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2"></div>
-                </div>
+            <div class="carousel-slide js-carousel-slide min-w-full h-full flex-shrink-0">
+                <img src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/fotohistorica4.jpg" 
+                     class="w-full h-full object-cover object-center" alt="Foto 4">
+            </div>
+
+            <div class="carousel-slide js-carousel-slide min-w-full h-full flex-shrink-0">
+                <img src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/fotohistorica5.jpg" 
+                     class="w-full h-full object-cover object-center" alt="Foto 5">
+            </div>
+
+        </div>
+
+        <div class="absolute inset-0 flex items-center justify-between p-4 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+            <button id="prev-historia" class="p-2 rounded-full bg-white/20 backdrop-blur-sm text-white hover:bg-white/40 transition-all pointer-events-auto">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button id="next-historia" class="p-2 rounded-full bg-white/20 backdrop-blur-sm text-white hover:bg-white/40 transition-all pointer-events-auto">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <div id="carousel-indicators" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2"></div>
+    </div>
+</div>
 
                 <div class="absolute -top-6 -left-6 bg-bertoletti text-white p-6 rounded-2xl shadow-xl text-center z-20">
                     <div class="text-4xl font-bold counter-anim" data-target="50" data-suffix="+">+0</div>
@@ -582,17 +585,17 @@
     if (menuClose) menuClose.addEventListener('click', () => toggleMenu(false));
     mobileLinks.forEach(link => link.addEventListener('click', () => toggleMenu(false)));
 
-    // --- 4. CARRUSEL HISTORIA CORREGIDO ---
+    // --- 4. CARRUSEL HISTORIA TERMINADO ---
     const track = document.querySelector('.js-carousel-track');
-    const nextButton = document.getElementById('next-historia'); // Antes decía .js-carousel-next
-    const prevButton = document.getElementById('prev-historia'); // Antes decía .js-carousel-prev
-    const indicatorsNav = document.getElementById('carousel-indicators');
-
     if (track && track.children.length > 0) {
         const slides = Array.from(track.children);
+        const nextButton = document.querySelector('.js-carousel-next');
+        const prevButton = document.querySelector('.js-carousel-prev');
+        const indicatorsNav = document.querySelector('.js-carousel-indicators');
+
         let currentSlideIndex = 0;
 
-        // Crear indicadores si no existen
+        // Crear puntitos (indicadores) solo si no existen
         if (indicatorsNav && indicatorsNav.children.length === 0) {
             slides.forEach((_, index) => {
                 const dot = document.createElement('div');
@@ -604,9 +607,11 @@
         const dots = indicatorsNav ? Array.from(indicatorsNav.children) : [];
 
         const updateCarousel = (index) => {
-            currentSlideIndex = (index + slides.length) % slides.length;
-            track.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
-            dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlideIndex));
+            // Asegurar que el índice sea válido con aritmética modular
+            index = (index + slides.length) % slides.length;
+            track.style.transform = `translateX(-${index * 100}%)`;
+            dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+            currentSlideIndex = index;
         };
 
         if (nextButton) nextButton.addEventListener('click', () => updateCarousel(currentSlideIndex + 1));
@@ -619,7 +624,9 @@
         // Auto-play cada 5 segundos
         setInterval(() => updateCarousel(currentSlideIndex + 1), 5000);
     }
+}); // Cierre del addEventListener "DOMContentLoaded"
 
 </script>
 </body>
 </html>
+
