@@ -148,12 +148,20 @@
             transition: transform 0.5s ease-in-out;
             height: 100%;
         }
+        .carousel-slide {
+            min-width: 100%;
+            flex-shrink: 0;
+            height: 100%;
+            overflow: hidden; /* Evita que imágenes grandes "empujen" el diseño */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
         .carousel-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* <- Esta es la palabra correcta: 'fit' */
-    object-position: center;
-}
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Recorta la imagen para que llene el espacio sin deformarse */
+            object-position: center; /* Asegura que lo importante de la foto esté siempre al medio */
         }
         .carousel-indicator.active {
             background-color: var(--rojo-bertoletti);
@@ -574,17 +582,17 @@
     if (menuClose) menuClose.addEventListener('click', () => toggleMenu(false));
     mobileLinks.forEach(link => link.addEventListener('click', () => toggleMenu(false)));
 
-    // --- 4. CARRUSEL HISTORIA TERMINADO ---
+    // --- 4. CARRUSEL HISTORIA CORREGIDO ---
     const track = document.querySelector('.js-carousel-track');
+    const nextButton = document.getElementById('next-historia'); // Antes decía .js-carousel-next
+    const prevButton = document.getElementById('prev-historia'); // Antes decía .js-carousel-prev
+    const indicatorsNav = document.getElementById('carousel-indicators');
+
     if (track && track.children.length > 0) {
         const slides = Array.from(track.children);
-        const nextButton = document.querySelector('.js-carousel-next');
-        const prevButton = document.querySelector('.js-carousel-prev');
-        const indicatorsNav = document.querySelector('.js-carousel-indicators');
-
         let currentSlideIndex = 0;
 
-        // Crear puntitos (indicadores) solo si no existen
+        // Crear indicadores si no existen
         if (indicatorsNav && indicatorsNav.children.length === 0) {
             slides.forEach((_, index) => {
                 const dot = document.createElement('div');
@@ -596,11 +604,9 @@
         const dots = indicatorsNav ? Array.from(indicatorsNav.children) : [];
 
         const updateCarousel = (index) => {
-            // Asegurar que el índice sea válido con aritmética modular
-            index = (index + slides.length) % slides.length;
-            track.style.transform = `translateX(-${index * 100}%)`;
-            dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-            currentSlideIndex = index;
+            currentSlideIndex = (index + slides.length) % slides.length;
+            track.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+            dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlideIndex));
         };
 
         if (nextButton) nextButton.addEventListener('click', () => updateCarousel(currentSlideIndex + 1));
@@ -613,7 +619,6 @@
         // Auto-play cada 5 segundos
         setInterval(() => updateCarousel(currentSlideIndex + 1), 5000);
     }
-}); // Cierre del addEventListener "DOMContentLoaded"
 
 </script>
 </body>
