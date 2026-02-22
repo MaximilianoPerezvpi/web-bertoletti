@@ -166,6 +166,30 @@
             transform: scale(1.2);
             opacity: 1;
         }
+        /* ===============================
+   CARRUSEL HISTORIA – FIX TOTAL
+   =============================== */
+
+.carousel-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  background-color: #f3f4f6;
+  display: block;
+}
+
+/* MOBILE: evitar recortes */
+@media (max-width: 768px) {
+  #historia-carousel {
+    height: 320px;
+    max-height: none;
+  }
+
+  .carousel-img {
+    object-fit: contain;
+  }
+}
     </style>
 </head>
 <body class="text-gray-800 bg-white font-sans">
@@ -657,10 +681,9 @@
     const track = document.querySelector('.js-carousel-track');
     if (track && track.children.length > 0) {
         const slides = Array.from(track.children);
-        const nextButton = document.querySelector('.js-carousel-next');
-        const prevButton = document.querySelector('.js-carousel-prev');
-        const indicatorsNav = document.querySelector('.js-carousel-indicators');
-
+        const nextButton = document.getElementById('next-historia');
+const prevButton = document.getElementById('prev-historia');
+const indicatorsNav = document.getElementById('carousel-indicators');
         let currentSlideIndex = 0;
 
         // Crear puntitos (indicadores) solo si no existen
