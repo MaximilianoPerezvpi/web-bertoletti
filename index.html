@@ -387,7 +387,7 @@
 <div class="lg:w-1/2 relative mt-16 lg:mt-0 reveal-on-scroll">
 
   <div
-    id="historia-carousel"
+id="historia-carousel" class="hidden md:block" ...
 class="relative rounded-3xl shadow-2xl overflow-hidden group bg-gray-100
        md:aspect-[16/9] h-[420px] md:h-auto"
 >
@@ -466,7 +466,16 @@ class="relative rounded-3xl shadow-2xl overflow-hidden group bg-gray-100
     ></div>
 
   </div>
+  <!-- GALERÍA SOLO MOBILE -->
+<div class="md:hidden space-y-6">
 
+  <img src="historia-1.jpg" class="w-full rounded-2xl" alt="Historia 1">
+  <img src="historia-2.jpg" class="w-full rounded-2xl" alt="Historia 2">
+  <img src="historia-3.jpg" class="w-full rounded-2xl" alt="Historia 3">
+  <img src="historia-4.jpg" class="w-full rounded-2xl" alt="Historia 4">
+  <img src="historia-5.jpg" class="w-full rounded-2xl" alt="Historia 5">
+
+</div>
   <!-- BLOQUE ROJO -->
   <div class="absolute -top-6 -left-6 bg-bertoletti text-white p-6 rounded-2xl shadow-xl text-center z-20">
     <div class="text-4xl font-bold counter-anim" data-target="60" data-suffix="+">+0</div>
