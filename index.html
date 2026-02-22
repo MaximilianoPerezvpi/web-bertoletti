@@ -229,6 +229,34 @@
     display: none !important;
   }
 }
+        /* ===============================
+   RESET DESKTOP (FUERZA BUEN ESTADO)
+   =============================== */
+
+/* DESKTOP: estado normal */
+#historia-carousel {
+  display: block;
+}
+
+#historia-mobile {
+  display: none;
+}
+        /* ===============================
+   MOBILE ONLY
+   =============================== */
+
+@media (max-width: 768px) {
+
+  /* ocultamos carrusel JS */
+  #historia-carousel {
+    display: none;
+  }
+
+  /* mostramos galería simple */
+  #historia-mobile {
+    display: block;
+  }
+}
     </style>
 </head>
 <body class="text-gray-800 bg-white font-sans">
@@ -467,8 +495,7 @@ class="relative rounded-3xl shadow-2xl overflow-hidden group bg-gray-100
 
   </div>
   <!-- GALERÍA SOLO MOBILE -->
-<div class="md:hidden space-y-6">
-
+<div id="historia-mobile" class="space-y-6">
   <img src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/d7d7e8a44fa98798a6976315d07c80b0.jpg" class="w-full rounded-2xl" alt="Historia 1">
   <img src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/fotohistorica2.jpg" class="w-full rounded-2xl" alt="Historia 2">
   <img src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/fotohistorica3.jpg" class="w-full rounded-2xl" alt="Historia 3">
