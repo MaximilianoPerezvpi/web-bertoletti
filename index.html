@@ -181,6 +181,54 @@
                 aspect-ratio: auto !important; /* Apagamos reglas que confunden a iOS */
             }
         }
+        /* =====================================
+   FIX DEFINITIVO CARRUSEL EN MOBILE
+   NO AFECTA DESKTOP
+   ===================================== */
+
+/* SOLO MOBILE */
+@media (max-width: 768px) {
+
+  /* El contenedor principal del carrusel */
+  #historia-carousel {
+    height: 360px;            /* altura controlada */
+    overflow: hidden;
+  }
+
+  /* Track del carrusel */
+  .carousel-track {
+    transform: none !important;   /* 🔥 mata el bug de Safari */
+    display: flex;
+    overflow-x: auto;             /* scroll nativo */
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Cada slide */
+  .carousel-slide {
+    min-width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+    scroll-snap-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Imágenes */
+  .carousel-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;          /* 🔥 evita que se corten */
+    background: #f3f4f6;          /* fondo neutro */
+  }
+
+  /* Botones en mobile NO */
+  #prev-historia,
+  #next-historia {
+    display: none !important;
+  }
+}
     </style>
 </head>
 <body class="text-gray-800 bg-white font-sans">
