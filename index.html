@@ -313,82 +313,107 @@
           del MERCOSUR.
         </p>
         <p class="font-bold text-gray-900 border-l-4 border-bertoletti pl-4">
-          Edgardo Bertoletti SA es la solución eficiente y confiable para su
+          Edgardo Bertoletti S.A. es la solución eficiente y confiable para su
           transporte de cualquier tipo de mercancías.
         </p>
       </div>
     </div>
 
     <!-- CARRUSEL -->
-    <div class="lg:w-1/2 relative mt-16 lg:mt-0 reveal-on-scroll">
+    <!-- CARRUSEL HISTORIA -->
+<div class="lg:w-1/2 relative mt-16 lg:mt-0 reveal-on-scroll">
 
-      <div
-        id="historia-carousel"
-        class="relative rounded-3xl shadow-2xl overflow-hidden group bg-gray-100
-               aspect-[4/3] md:aspect-[16/9] max-h-[450px]"
-      >
+  <div
+    id="historia-carousel"
+    class="relative rounded-3xl shadow-2xl overflow-hidden group bg-gray-100
+           aspect-[4/3] md:aspect-[16/9] max-h-[450px]"
+  >
 
-        <div class="carousel-track js-carousel-track h-full flex transition-transform duration-500 ease-in-out">
+    <div class="carousel-track js-carousel-track h-full flex transition-transform duration-500 ease-in-out">
 
-          <div class="carousel-slide min-w-full h-full flex-shrink-0">
-            <img
-              src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/d7d7e8a44fa98798a6976315d07c80b0.jpeg"
-              alt="Historia Bertoletti"
-              class="w-full h-full object-cover object-center select-none"
-            />
-          </div>
-
-          <div class="carousel-slide min-w-full h-full flex-shrink-0">
-            <img
-              src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/fotohistorica2.jpg"
-              alt="Historia Bertoletti"
-              class="w-full h-full object-cover object-center select-none"
-            />
-          </div>
-
-          <div class="carousel-slide min-w-full h-full flex-shrink-0">
-            <img
-              src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/fotohistorica3.jpg"
-              alt="Historia Bertoletti"
-              class="w-full h-full object-cover object-center select-none"
-            />
-          </div>
-
-          <div class="carousel-slide min-w-full h-full flex-shrink-0">
-            <img
-              src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/fotohistorica4.jpg"
-              alt="Historia Bertoletti"
-              class="w-full h-full object-cover object-center select-none"
-            />
-          </div>
-
-          <div class="carousel-slide min-w-full h-full flex-shrink-0">
-            <img
-              src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/fotohistorica5.jpg"
-              alt="Historia Bertoletti"
-              class="w-full h-full object-cover object-center select-none"
-            />
-          </div>
-
-        </div>
-
-        <!-- INDICADORES -->
-        <div
-          id="carousel-indicators"
-          class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20"
-        ></div>
+      <div class="carousel-slide min-w-full h-full flex-shrink-0">
+        <img
+          src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/d7d7e8a44fa98798a6976315d07c80b0.jpeg"
+          alt="Historia Bertoletti"
+          class="carousel-img"
+        />
       </div>
 
-      <!-- BLOQUE ROJO -->
-      <div class="absolute -top-6 -left-6 bg-bertoletti text-white p-6 rounded-2xl shadow-xl text-center z-20">
-        <div class="text-4xl font-bold counter-anim" data-target="60" data-suffix="+">+0</div>
-        <div class="text-xs uppercase font-bold">
-          Unidades<br />en Flota
-        </div>
+      <div class="carousel-slide min-w-full h-full flex-shrink-0">
+        <img
+          src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/fotohistorica2.jpg"
+          alt="Historia Bertoletti"
+          class="carousel-img"
+        />
+      </div>
+
+      <div class="carousel-slide min-w-full h-full flex-shrink-0">
+        <img
+          src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/fotohistorica3.jpg"
+          alt="Historia Bertoletti"
+          class="carousel-img"
+        />
+      </div>
+
+      <div class="carousel-slide min-w-full h-full flex-shrink-0">
+        <img
+          src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/fotohistorica4.jpg"
+          alt="Historia Bertoletti"
+          class="carousel-img"
+        />
+      </div>
+
+      <div class="carousel-slide min-w-full h-full flex-shrink-0">
+        <img
+          src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/fotohistorica5.jpg"
+          alt="Historia Bertoletti"
+          class="carousel-img"
+        />
       </div>
 
     </div>
+
+    <!-- BOTÓN PREV -->
+    <button
+      id="prev-historia"
+      class="absolute left-4 top-1/2 -translate-y-1/2 z-30
+             bg-black/40 text-white w-10 h-10 rounded-full
+             flex items-center justify-center backdrop-blur-sm
+             hover:bg-black/60 transition"
+      aria-label="Imagen anterior"
+    >
+      ‹
+    </button>
+
+    <!-- BOTÓN NEXT -->
+    <button
+      id="next-historia"
+      class="absolute right-4 top-1/2 -translate-y-1/2 z-30
+             bg-black/40 text-white w-10 h-10 rounded-full
+             flex items-center justify-center backdrop-blur-sm
+             hover:bg-black/60 transition"
+      aria-label="Imagen siguiente"
+    >
+      ›
+    </button>
+
+    <!-- INDICADORES -->
+    <div
+      id="carousel-indicators"
+      class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20"
+    ></div>
+
   </div>
+
+  <!-- BLOQUE ROJO -->
+  <div class="absolute -top-6 -left-6 bg-bertoletti text-white p-6 rounded-2xl shadow-xl text-center z-20">
+    <div class="text-4xl font-bold counter-anim" data-target="60" data-suffix="+">+0</div>
+    <div class="text-xs uppercase font-bold">
+      Unidades<br>en Flota
+    </div>
+  </div>
+
+</div>
 </section>
 
     <section class="py-24 bg-bertoletti bg-pattern text-white text-center">
