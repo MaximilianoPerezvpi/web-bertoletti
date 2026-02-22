@@ -148,11 +148,19 @@
             transition: transform 0.5s ease-in-out;
             height: 100%;
         }
-        .carousel-slide {
-            min-width: 100%;
-            flex-shrink: 0;
-            height: 100%;
-        }
+        /* Ajustes finos carrusel historia */
+.carousel-slide img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Mobile: mejor encuadre */
+@media (max-width: 768px) {
+  #historia-carousel {
+    aspect-ratio: 1 / 1;
+  }
+}
         .carousel-indicator.active {
             background-color: var(--rojo-bertoletti);
             transform: scale(1.2);
@@ -283,69 +291,105 @@
     </section>
 
     <section id="historia" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 lg:flex items-start gap-16">
-            <div class="lg:w-1/2 reveal-on-scroll">
-                <h2 class="text-5xl font-extrabold mb-10">Nuestra Historia</h2>
-                <div class="space-y-6 text-gray-600 text-lg leading-relaxed">
-                    <p>Somos una empresa de origen 100% uruguaya y familiar que se ha destacado en el mercado nacional e internacional por su trato personalizado, aún hoy atendida por sus dueños.</p>
-                    <p>Fue fundada en 1965 realizando transporte de cargas secas a granel. A partir de 1975 se ampliaron los destinos hacia Brasil, Argentina, Chile, Paraguay, Bolivia y recientemente Perú.</p>
-                    <p>Disponemos de un parque automotor de <strong>+50 unidades completas</strong> preparadas para las exigencias del MERCOSUR.</p>
-                    <p class="font-bold text-gray-900 border-l-4 border-bertoletti pl-4">Edgardo Bertoletti SA es la solución eficiente y confiable para su transporte de cualquier tipo de mercancías.</p>
-                </div>
-            </div>
-            
-          <div class="lg:w-1/2 relative mt-16 lg:mt-0 reveal-on-scroll">
-    <div id="historia-carousel" class="relative rounded-3xl shadow-2xl h-[450px] overflow-hidden group bg-gray-100">
-        
-        <div class="carousel-track js-carousel-track h-full flex transition-transform duration-500 ease-in-out">
-            
-            <div class="carousel-slide js-carousel-slide min-w-full h-full flex-shrink-0">
-                <img src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/d7d7e8a44fa98798a6976315d07c80b0.jpeg" 
-                     class="w-full h-full object-cover object-center" alt="Foto 1">
-            </div>
+  <div class="max-w-7xl mx-auto px-4 lg:flex items-start gap-16">
 
-            <div class="carousel-slide js-carousel-slide min-w-full h-full flex-shrink-0">
-                <img src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/fotohistorica2.jpg" 
-                     class="w-full h-full object-cover object-center" alt="Foto 2">
-            </div>
-
-            <div class="carousel-slide js-carousel-slide min-w-full h-full flex-shrink-0">
-                <img src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/fotohistorica3.jpg" 
-                     class="w-full h-full object-cover object-center" alt="Foto 3">
-            </div>
-
-            <div class="carousel-slide js-carousel-slide min-w-full h-full flex-shrink-0">
-                <img src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/fotohistorica4.jpg" 
-                     class="w-full h-full object-cover object-center" alt="Foto 4">
-            </div>
-
-            <div class="carousel-slide js-carousel-slide min-w-full h-full flex-shrink-0">
-                <img src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/fotohistorica5.jpg" 
-                     class="w-full h-full object-cover object-center" alt="Foto 5">
-            </div>
-
-        </div>
-
-        <div class="absolute inset-0 flex items-center justify-between p-4 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-            <button id="prev-historia" class="p-2 rounded-full bg-white/20 backdrop-blur-sm text-white hover:bg-white/40 transition-all pointer-events-auto">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <button id="next-historia" class="p-2 rounded-full bg-white/20 backdrop-blur-sm text-white hover:bg-white/40 transition-all pointer-events-auto">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-        </div>
-
-        <div id="carousel-indicators" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2"></div>
+    <!-- TEXTO -->
+    <div class="lg:w-1/2 reveal-on-scroll">
+      <h2 class="text-5xl font-extrabold mb-10">Nuestra Historia</h2>
+      <div class="space-y-6 text-gray-600 text-lg leading-relaxed">
+        <p>
+          Somos una empresa de origen 100% uruguaya y familiar que se ha destacado
+          en el mercado nacional e internacional por su trato personalizado, aún
+          hoy atendida por sus dueños.
+        </p>
+        <p>
+          Fue fundada en 1965 realizando transporte de cargas secas a granel. A
+          partir de 1975 se ampliaron los destinos hacia Brasil, Argentina, Chile,
+          Paraguay, Bolivia y recientemente Perú.
+        </p>
+        <p>
+          Disponemos de un parque automotor de
+          <strong>+50 unidades completas</strong> preparadas para las exigencias
+          del MERCOSUR.
+        </p>
+        <p class="font-bold text-gray-900 border-l-4 border-bertoletti pl-4">
+          Edgardo Bertoletti SA es la solución eficiente y confiable para su
+          transporte de cualquier tipo de mercancías.
+        </p>
+      </div>
     </div>
-</div>
 
-                <div class="absolute -top-6 -left-6 bg-bertoletti text-white p-6 rounded-2xl shadow-xl text-center z-20">
-                    <div class="text-4xl font-bold counter-anim" data-target="50" data-suffix="+">+0</div>
-                    <div class="text-xs uppercase font-bold">Unidades<br>en Flota</div>
-                </div>
-            </div>
+    <!-- CARRUSEL -->
+    <div class="lg:w-1/2 relative mt-16 lg:mt-0 reveal-on-scroll">
+
+      <div
+        id="historia-carousel"
+        class="relative rounded-3xl shadow-2xl overflow-hidden group bg-gray-100
+               aspect-[4/3] md:aspect-[16/9] max-h-[450px]"
+      >
+
+        <div class="carousel-track js-carousel-track h-full flex transition-transform duration-500 ease-in-out">
+
+          <div class="carousel-slide min-w-full h-full flex-shrink-0">
+            <img
+              src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/d7d7e8a44fa98798a6976315d07c80b0.jpeg"
+              alt="Historia Bertoletti"
+              class="w-full h-full object-cover object-center select-none"
+            />
+          </div>
+
+          <div class="carousel-slide min-w-full h-full flex-shrink-0">
+            <img
+              src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/fotohistorica2.jpg"
+              alt="Historia Bertoletti"
+              class="w-full h-full object-cover object-center select-none"
+            />
+          </div>
+
+          <div class="carousel-slide min-w-full h-full flex-shrink-0">
+            <img
+              src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/fotohistorica3.jpg"
+              alt="Historia Bertoletti"
+              class="w-full h-full object-cover object-center select-none"
+            />
+          </div>
+
+          <div class="carousel-slide min-w-full h-full flex-shrink-0">
+            <img
+              src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/fotohistorica4.jpg"
+              alt="Historia Bertoletti"
+              class="w-full h-full object-cover object-center select-none"
+            />
+          </div>
+
+          <div class="carousel-slide min-w-full h-full flex-shrink-0">
+            <img
+              src="./Bertoletti Transporte y Logística Uruguay - Más de 35 Años de Experiencia_files/fotohistorica5.jpg"
+              alt="Historia Bertoletti"
+              class="w-full h-full object-cover object-center select-none"
+            />
+          </div>
+
         </div>
-    </section>
+
+        <!-- INDICADORES -->
+        <div
+          id="carousel-indicators"
+          class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20"
+        ></div>
+      </div>
+
+      <!-- BLOQUE ROJO -->
+      <div class="absolute -top-6 -left-6 bg-bertoletti text-white p-6 rounded-2xl shadow-xl text-center z-20">
+        <div class="text-4xl font-bold counter-anim" data-target="50" data-suffix="+">+0</div>
+        <div class="text-xs uppercase font-bold">
+          Unidades<br />en Flota
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
     <section class="py-24 bg-bertoletti bg-pattern text-white text-center">
         <div class="max-w-7xl mx-auto px-4">
