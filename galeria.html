@@ -91,60 +91,51 @@
     </div>
 
 <script>
-    const totalFotos = 30;
-    const grid = document.getElementById('gallery-grid');
-    
-    // Generar el contenido de una vez
-    let htmlContent = '';
-    for(let i=1; i<=totalFotos; i++) {
-        htmlContent += `
-            <div class="gallery-card reveal-on-scroll group relative bg-white rounded-2xl shadow-md overflow-hidden cursor-pointer" 
-                 onclick="openLightbox('img/camion${i}.jpg')">
-                <div class="aspect-square overflow-hidden bg-gray-100">
-                    <img src="img/camion${i}.jpg" 
-                         loading="lazy" 
-                         decoding="async"
-                         class="img-zoom w-full h-full object-cover" 
-                         alt="Unidad Bertoletti">
-                </div>
-                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <i class="ri-zoom-in-line text-white text-3xl"></i>
-                </div>
-            </div>`;
-    }
-    grid.innerHTML = htmlContent;
+        const totalFotos = 30;
+        const grid = document.getElementById('gallery-grid');
 
-    // Observer optimizado: unobserve una vez visible
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px 300px 0px" // Carga las fotos 300px antes de que llegues
-    };
+        // Generar fotos con animación de aparición
+        for(let i=1; i<=totalFotos; i++) {
+            grid.innerHTML += `
+                <div class="gallery-card reveal-on-scroll group relative bg-white rounded-2xl shadow-md overflow-hidden cursor-pointer shine-effect" onclick="openLightbox('img/camion${i}.jpg')">
+                    <div class="h-72 overflow-hidden">
+                        <img src="img/camion${i}.jpg" class="img-zoom w-full h-full object-cover" alt="Unidad Bertoletti">
+                    </div>
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i class="ri-zoom-in-line text-white text-3xl"></i>
+                    </div>
+                </div>`;
+        }
 
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('reveal-visible');
-                observer.unobserve(entry.target); // ESTO ES CLAVE: Deja de vigilar la foto una vez mostrada
-            }
-        });
-    }, observerOptions);
+        // Lógica de Animación al Scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal-visible');
+                }
+            });
+        }, { threshold: 0.1 });
 
-    document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
 
-    // Funciones Lightbox (sin cambios, ya son livianas)
-    function openLightbox(src) {
+        // Lógica Lightbox
         const lb = document.getElementById('lightbox');
         const lbImg = document.getElementById('lightbox-img');
-        lbImg.src = src;
-        lb.classList.replace('hidden', 'flex');
-        document.body.style.overflow = 'hidden';
-    }
 
-    function closeLightbox() {
-        const lb = document.getElementById('lightbox');
-        lb.classList.replace('flex', 'hidden');
-        document.body.style.overflow = 'auto';
-    }
-</script>   
+        function openLightbox(src) {
+            lbImg.src = src;
+            lb.classList.replace('hidden', 'flex');
+            setTimeout(() => lbImg.classList.replace('scale-95', 'scale-100'), 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lbImg.classList.replace('scale-100', 'scale-95');
+            setTimeout(() => {
+                lb.classList.replace('flex', 'hidden');
+                document.body.style.overflow = 'auto';
+            }, 200);
+        }
+    </script>
 </body>
 </html>
