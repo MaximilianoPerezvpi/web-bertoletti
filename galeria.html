@@ -90,18 +90,17 @@
         <img id="lightbox-img" src="" class="max-h-[85vh] max-w-full rounded-lg shadow-2xl transform transition-transform duration-300 scale-95" onclick="event.stopPropagation()">
     </div>
 
-   <script>
-    const totalFotos = 30; //
-    const grid = document.getElementById('gallery-grid'); //
+<script>
+    const totalFotos = 30;
+    const grid = document.getElementById('gallery-grid');
     
-    // 1. Armamos todo el contenido en una variable primero (más rápido)
+    // Generar el contenido de una vez
     let htmlContent = '';
-    
     for(let i=1; i<=totalFotos; i++) {
         htmlContent += `
-            <div class="gallery-card reveal-on-scroll group relative bg-white rounded-2xl shadow-md overflow-hidden cursor-pointer shine-effect" 
+            <div class="gallery-card reveal-on-scroll group relative bg-white rounded-2xl shadow-md overflow-hidden cursor-pointer" 
                  onclick="openLightbox('img/camion${i}.jpg')">
-                <div class="h-72 overflow-hidden bg-gray-200">
+                <div class="aspect-square overflow-hidden bg-gray-100">
                     <img src="img/camion${i}.jpg" 
                          loading="lazy" 
                          decoding="async"
@@ -113,42 +112,39 @@
                 </div>
             </div>`;
     }
-    
-    // 2. Inyectamos todo de una sola vez
     grid.innerHTML = htmlContent;
 
-    // 3. Lógica de Animación al Scroll (Ya la tenías, se mantiene)
-    const observer = new IntersectionObserver((entries) => {
+    // Observer optimizado: unobserve una vez visible
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px 300px 0px" // Carga las fotos 300px antes de que llegues
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('reveal-visible');
+                observer.unobserve(entry.target); // ESTO ES CLAVE: Deja de vigilar la foto una vez mostrada
             }
         });
-    }, { 
-        threshold: 0.05, // Se activa un poquito antes para que sea más fluido
-        rootMargin: "0px 0px 200px 0px" // Empieza a cargar 200px antes de que aparezcan
-    });
+    }, observerOptions);
 
     document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
 
-    // 4. Lógica Lightbox (Se mantiene igual)
-    const lb = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lightbox-img');
-
+    // Funciones Lightbox (sin cambios, ya son livianas)
     function openLightbox(src) {
+        const lb = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lightbox-img');
         lbImg.src = src;
         lb.classList.replace('hidden', 'flex');
-        setTimeout(() => lbImg.classList.replace('scale-95', 'scale-100'), 10);
         document.body.style.overflow = 'hidden';
     }
 
     function closeLightbox() {
-        lbImg.classList.replace('scale-100', 'scale-95');
-        setTimeout(() => {
-            lb.classList.replace('flex', 'hidden');
-            document.body.style.overflow = 'auto';
-        }, 200);
+        const lb = document.getElementById('lightbox');
+        lb.classList.replace('flex', 'hidden');
+        document.body.style.overflow = 'auto';
     }
-</script>
+</script>   
 </body>
 </html>
